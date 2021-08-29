@@ -1,38 +1,184 @@
-.App {
-  text-align: center;
+body{
+  background-color: #D6CAB0;
+  font-family: monospace;
+  color: dimgrey;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wrapper{
+
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  grid-template-areas:
+  "header header header"
+  "left-aside main right-aside"
+  "footer footer footer";
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+
+.header{
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  grid-area: header;
+  background-color: dimgrey;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header .headerlogo{
+  width: 225px; 
+}
+
+.left-aside{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 15px;
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  grid-area: left-aside;
+}
+
+.left-aside h1{
+  padding: 0 10px;
+  font-size: 20px;
+  background-color: lightcoral;
+  border-right:  1px solid rgba(0, 0, 0, 0.3);
+}
+
+.left-aside span.feature{
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  box-shadow:2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.left-aside .button-box{
+  display:flex;
+  justify-content: space-evenly;
+  margin: 10px;
+}
+
+.button-box button{
+  cursor:pointer;
+  padding: 10px 20%;
+  border: none;
+  border-radius: 50px;
+  background-color: lightcoral;
+}
+
+.button-box button:hover{
+  background-color: rgba(59, 241, 3, 0.877);
+  transition: 1s;
+}
+.main-area{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: main;
+  background-image: url(./images/front-portal.png);
+  background-position:center;
+  background-size: 110%;
+  border-radius: 50px;
+}
+
+.main-area .character-image{
+  margin: 20px;
+  border:2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+}
+
+.right-aside{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  grid-area: right-aside;
+  padding-right: 15px;
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.right-aside h2{
+  
+  padding: 0 10px;
+  font-size: 20px;
+  background-color: lightcoral;
+  border-right:  1px solid rgba(0, 0, 0, 0.3);
+}
+
+
+.right-aside .form-box{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 25px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  align-self: center;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+.right-aside input{
+  width: 80%;
+  margin: 10px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: #D6CAB0;
+  font-family: monospace;
+}
+.right-aside button{
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 60px;
+  cursor: pointer;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: #D6CAB0;
+  color: dimgrey;
+  font-family: monospace;
+  
 }
 
-.App-link {
-  color: #61dafb;
+.right-aside button:hover{
+  background-color: chartreuse;
+  font-weight: bolder;
+  color: black;
+  transition: 1s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+@media only screen and (max-width:768px){
+  .wrapper{
+
+    grid-template-areas:
+    "header header"
+    "left-aside main"
+    "right-aside right-aside"
+    "footer footer";
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
+
+  .left-aside{
+    border: none;
+  }
+}
+
+@media only screen and (max-width:550px){
+  .wrapper{
+
+    grid-template-areas:
+    "header"
+    "main "
+    "left-aside "
+    "right-aside"
+    "footer";
+    grid-template-columns: 1fr;
+  }
+
+  .left-aside{
+    border: none;
   }
 }
