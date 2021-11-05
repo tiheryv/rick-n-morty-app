@@ -1,22 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import './App.css'
-
-
 import imageLogo from './images/oficial-logo.png';
-
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-
 import {faArrowRight} from '@fortawesome/free-solid-svg-icons'; 
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons'; 
-
 import CharacterName from './js/character-name';
 import CharacterImage from './js/caracter-image';
 import CharacterStatus from './js/character-status';
 import CharacterGender from './js/character-gender';
 import CharacterSpecies from './js/character-species';
-/* import CharacterOrigin from './js/character-origin' */
 import NextItem from './js/next-item';
 import API from './js/api'
+import Header from './components/header';
 
 const api = new API()
 
@@ -39,9 +34,10 @@ function App() {
     <div className= "App">
     
       <div className= "wrapper">
-        <header className= "header">
+        {/* <header className= "header">
             <img className= "headerlogo" src={imageLogo} alt="logo-icon"/>
-        </header>`
+        </header>` */}
+        <Header/>
             
         <aside className= "left-aside">
           <h1>Characters info</h1>
