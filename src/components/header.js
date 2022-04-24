@@ -1,17 +1,11 @@
 import React from 'react'
-import { useState } from 'react/cjs/react.development';
 import imageLogo from '../images/oficial-logo.png';
-import styled, {css} from 'styled-components'
-import Nav from './nav';
+import styled from 'styled-components'
 
 
 const Header = () => {
-const [darkMode, setDarkMode] = useState(false) 
 
-const handleClick = () =>{
-    setDarkMode(!darkMode)
-}
-const  HeaderStyled = styled.div`
+    const HeaderStyled = styled.div`
 
 grid-area: header;
 
@@ -29,14 +23,12 @@ grid-area: header;
     width: 225px; 
   }
   `
-return (
-    <HeaderStyled>
-        <div class="header">
-         
-            <img class= "headerlogo" width={225} src={imageLogo} alt="logo-icon"/>
-            <button type="button" onClick={handleClick}> {darkMode ? 'DarkMode' : 'LightMode'}</button>
-        </div>     
-    </HeaderStyled>
+    return (
+        <HeaderStyled>
+            <div class="header">
+                <img class="headerlogo" width={225} src={imageLogo} alt="logo-icon" />
+            </div>
+        </HeaderStyled>
     )
 }
 

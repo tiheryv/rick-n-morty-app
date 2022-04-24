@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -8,7 +8,8 @@ import CharacterImage from './caracter-image';
 import CharacterStatus from './character-status';
 import CharacterGender from './character-gender';
 import CharacterSpecies from './character-species';
-import NextItem from './next-item';
+import Buttons from './Buttons';
+
 import API from './api'
 const api = new API()
 
@@ -53,24 +54,7 @@ const HomeStyled = styled.div`
     box-shadow:2px 2px 5px rgba(0, 0, 0, 0.3);
   }
   
-  .left-aside .button-box{
-    display:flex;
-    justify-content: space-evenly;
-    margin: 10px;
-  }
   
-  .button-box button{
-    cursor:pointer;
-    padding: 10px 20%;
-    border: none;
-    border-radius: 50px;
-    background-color: lightcoral;
-  }
-  
-  .button-box button:hover{
-    background-color: rgba(59, 241, 3, 0.877);
-    transition: 1s;
-  }
   .main-area .character-image{
     margin: 20px;
     border:2px solid rgba(0, 0, 0, 0.3);
@@ -170,57 +154,59 @@ const HomeStyled = styled.div`
 `
 
 const Home = () => {
-    const [character, setCharacter] = useState({})
 
-    useEffect(() => {
+  const [character, setCharacter] = useState([])
 
-        async function getCharacter() {
-            setCharacter(await api.getCharacter(1))
-        }
-        getCharacter()
-    }, [])
+  const [number, setNumber] = useState(1)
 
-    return (
-        <HomeStyled>
-            <div className="wrapper">
+  useEffect(() => {
 
-                <aside className="left-aside">
-                    <h1>Characters info</h1>
+    async function getCharacter() {
+      setCharacter(await api.getCharacter(number))
+    }
+    getCharacter()
+  }, [number])
 
-                    <span className="feature">NAME: <CharacterName name={character.name} /></span>
-                    <span className="feature">STATUS: <CharacterStatus status={character.status} /></span>
-                    <span className="feature">GENDER:<CharacterGender gender={character.gender} /></span>
-                    <span className="feature">SPECIE:<CharacterSpecies species={character.species} /></span>
+  return (
+    <HomeStyled>
+      <div className="wrapper">
+
+        <aside className="left-aside">
+          <h1>Characters info</h1>
+
+          <span className="feature">NAME: <CharacterName name={character.name} /></span>
+          <span className="feature">STATUS: <CharacterStatus status={character.status} /></span>
+          <span className="feature">GENDER:<CharacterGender gender={character.gender} /></span>
+          <span className="feature">SPECIE:<CharacterSpecies species={character.species} /></span>
 
 
-                    <div className="button-box">
-                        <button><FontAwesomeIcon icon={faArrowLeft} /></button>
-                        <button><FontAwesomeIcon icon={faArrowRight} /><NextItem /></button>
-                    </div>
 
-                </aside>
+          <Buttons setNumber={setNumber} number={number} />
 
-                <main className="main-area">
-                    <CharacterImage image={character.image} name={character.name} />
-                </main>
 
-                <aside className="right-aside">
+        </aside>
 
-                    <h2>Characters Search</h2>
-                    <form className="form-box">
-                        <input type="text" id="name" name="lname" placeholder="Name" />
-                        <input type="text" id="id" name="lid" placeholder="ID" />
-                        <input type="text" id="episode" name="lepisode" placeholder="Episode" />
-                        <input type="text" id="gender" name="lgender" placeholder="Gender" />
-                        <input type="text" id="location" name="location" placeholder="Location" />
-                    </form>
+        <main className="main-area">
+          <CharacterImage image={character.image} name={character.name} />
+        </main>
 
-                    <button className="submit-button" type="submit" value="Submit">Search</button>
-                </aside>
+        <aside className="right-aside">
 
-            </div>
-            </HomeStyled>
-    )
+          <h2>Characters Search</h2>
+          <form className="form-box">
+            <input type="text" id="name" name="lname" placeholder="Name" />
+            <input type="text" id="id" name="lid" placeholder="ID" />
+            <input type="text" id="episode" name="lepisode" placeholder="Episode" />
+            <input type="text" id="gender" name="lgender" placeholder="Gender" />
+            <input type="text" id="location" name="location" placeholder="Location" />
+          </form>
+
+          <button className="submit-button" type="submit" value="Submit">Search</button>
+        </aside>
+
+      </div>
+    </HomeStyled>
+  )
 }
 
 export default Home
