@@ -25,8 +25,8 @@ grid-area: header;
   `
     return (
         <HeaderStyled>
-            <div class="header">
-                <img class="headerlogo" width={225} src={imageLogo} alt="logo-icon" />
+            <div className="header">
+                <img className="headerlogo" width={225} src={imageLogo} alt="logo-icon" />
             </div>
         </HeaderStyled>
     )

@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import CharacterName from './character-name';
 import CharacterImage from './caracter-image';
 import CharacterStatus from './character-status';
@@ -179,10 +176,7 @@ const Home = () => {
           <span className="feature">GENDER:<CharacterGender gender={character.gender} /></span>
           <span className="feature">SPECIE:<CharacterSpecies species={character.species} /></span>
 
-
-
           <Buttons setNumber={setNumber} number={number} />
-
 
         </aside>
 
